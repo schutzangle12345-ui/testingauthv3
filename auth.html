@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join testingauthv3 | Secure Your SaaS 🚀</title>
+    <style>
+        :root {
+            --color-primary: #706fd3;
+            --color-primary-dark: #474787;
+            --color-background: #f7f7ff;
+            --color-surface: #ffffff;
+            --color-text: #2d3436;
+            --color-text-muted: #636e72;
+            --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow: 0 10px 30px rgba(112, 111, 211, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        header {
+            background: var(--color-surface);
+            padding: 1.25rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #f0efff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .cta-nav {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .cta-nav:hover {
+            background: var(--color-primary-dark);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Auth Main Section */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .auth-card {
+            background: var(--color-surface);
+            width: 100%;
+            max-width: 480px;
+            padding: 3rem 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 2px solid #e0e0ff;
+            text-align: center;
+        }
+
+        .auth-header {
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h1 {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Tabs System */
+        .tab-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #f0efff;
+            padding: 6px;
+            border-radius: 50px;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            border: none;
+            background: transparent;
+            padding: 0.75rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--color-text-muted);
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .tab-content {
+            display: none;
+            text-align: left;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            border: 2px solid #e0e0ff;
+            background: #fafaff;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(112, 111, 211, 0.1);
+            background: white;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--color-primary);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(112, 111, 211, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: white;
+            padding: 4rem 5% 2rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #b2bec3;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #454d4f;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #b2bec3;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: #b2bec3;
+            cursor: pointer;
+            transition: fill 0.2s;
+        }
+
+        .social-icons svg:hover {
+            fill: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                font-size: 0.9rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span style="font-weight:700;font-size:1.25rem">testingauthv3</span>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="auth.html" class="cta-nav" data-track="cta_click">Sign In</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-card">
+            <div class="auth-header">
+                <span style="font-size: 3rem;">✨</span>
+                <h1>Welcome!</h1>
+                <p>Let's get your security on lock. 🔒</p>
+            </div>
+
+            <div class="tab-controls">
+                <button class="tab-btn" onclick="switchTab('signin')" id="btn-signin">Sign In</button>
+                <button class="tab-btn active" onclick="switchTab('signup')" id="btn-signup">Sign Up</button>
+            </div>
+
+            <!-- Sign Up Tab -->
+            <div id="signup-content" class="tab-content active">
+                <form data-backend="signup" id="signup-form">
+                    <input type="hidden" name="role" value="user">
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Work Email</label>
+                        <input type="email" id="signup-email" name="email" placeholder="you@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-password">Create Password</label>
+                        <input type="password" id="signup-password" name="password" placeholder="At least 6 characters" minlength="6" required>
+                    </div>
+
+                    <button type="submit" data-track="cta_click">Create Account 🚀</button>
+                    
+                    <p data-success id="signup-success" style="display:none; color: #2ecc71; font-weight: bold; margin-top: 1.5rem; text-align: center; padding: 1rem; background: #eafff2; border-radius: 12px;">
+                        Registration successful! Please login.
+                    </p>
+                </form>
+            </div>
+
+            <!-- Sign In Tab -->
+            <div id="signin-content" class="tab-content">
+                <form id="signin-form">
+                    <div class="form-group">
+                        <label for="signin-email">Email Address</label>
+                        <input type="email" id="signin-email" placeholder="you@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signin-password">Password</label>
+                        <input type="password" id="signin-password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit">Sign In ➔</button>
+                    
+                    <p style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem; color: var(--color-text-muted);">
+                        Forgot your password? <a href="#" style="color: var(--color-primary); font-weight: 700; text-decoration: none;">Reset it here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo footer-logo">
+                    <span style="font-weight:700;font-size:1.25rem">testingauthv3</span>
+                </div>
+                <p style="color: #b2bec3; font-size: 0.9rem;">Helping SaaS teams conquer security questionnaires and win enterprise deals faster than ever. 🏆</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Product</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">What is a Security Assessment?</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">Privacy Policy</a></li>
+                    <li><a href="auth.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 testingauthv3. All rights reserved.</p>
+            <div class="social-icons">
+                <svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.493-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/></svg>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            const signupContent = document.getElementById('signup-content');
+            const signinContent = document.getElementById('signin-content');
+            const signupBtn = document.getElementById('btn-signup');
+            const signinBtn = document.getElementById('btn-signin');
+
+            if (tabId === 'signup') {
+                signupContent.classList.add('active');
+                signinContent.classList.remove('active');
+                signupBtn.classList.add('active');
+                signinBtn.classList.remove('active');
+            } else {
+                signupContent.classList.remove('active');
+                signinContent.classList.add('active');
+                signupBtn.classList.remove('active');
+                signinBtn.classList.add('active');
+            }
+        }
+
+        // Mutation Observer to watch for successful signup
+        const successMsg = document.getElementById('signup-success');
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    if (successMsg.style.display === 'block') {
+                        // Success detected! Switch tabs after 2 seconds
+                        setTimeout(() => {
+                            switchTab('signin');
+                            // Reset form and message for clean state
+                            document.getElementById('signup-form').reset();
+                            successMsg.style.display = 'none';
+                        }, 2000);
+                    }
+                }
+            });
+        });
+        observer.observe(successMsg, { attributes: true });
+    </script>
+
+    <script>
+    (function() {
+      var BACKEND = 'https://epitaphic-everett-propitious.ngrok-free.dev/api';
+      var TOKEN = '272b3d3c51bad616fa58f27c0b7da6718bed9514ccddc65fc880a69530965d8a';
+      var DOMAIN = 'testingauthv3.com';
+      var FORM_ID = 'cmmpuu130000yt8v4mu023qxm';
+      var HEADERS = { 'Content-Type': 'application/json', 'X-Token': TOKEN, 'X-Domain': DOMAIN };
+
+      // 1. Auto-track pageview
+      fetch(BACKEND + '/track', {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify({ event: 'pageview', path: window.location.pathname })
+      }).catch(function(){});
+
+      // 2. Track CTA clicks
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('[data-track]');
+        if (el) {
+          fetch(BACKEND + '/track', {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({ event: el.getAttribute('data-track'), path: window.location.pathname })
+          }).catch(function(){});
+        }
+      });
+
+      // 3. Handle all forms (Contact, Signup, Waitlist)
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-backend]');
+        if (!form) return;
+        e.preventDefault();
+        var type = form.getAttribute('data-backend');
+        var endpoint = type === 'signup' ? '/users' : '/forms/submit';
+        
+        // Extract dynamic form fields
+        var data = {};
+        new FormData(form).forEach(function(v, k) { data[k] = v; });
+        
+        // Add Form ID if it's a general form and we have it
+        if (type === 'form' && FORM_ID) {
+          data.formId = FORM_ID;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = '';
+        if (btn) {
+          originalText = btn.innerText;
+          btn.innerText = 'Sending...';
+          btn.disabled = true;
+        }
+
+        // Track Form Submission Event
+        fetch(BACKEND + '/track', {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify({ 
+            event: 'form_submission', 
+            path: window.location.pathname,
+            metadata: { formType: type } 
+          })
+        }).catch(function(){});
+
+        // Submit Form Data
+        fetch(BACKEND + endpoint, {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify(data)
+        }).then(function(r) { return r.json(); }).then(function(res) {
+          if (res.success) {
+            var msg = form.querySelector('[data-success]');
+            if (msg) { msg.style.display = 'block'; }
+            form.reset();
+            if (btn) btn.style.display = 'none';
+          } else {
+            alert(res.error || 'Failed to submit form');
+            if (btn) { btn.innerText = originalText; btn.disabled = false; }
+          }
+        }).catch(function(){
+          alert('Network error occurred');
+          if (btn) { btn.innerText = originalText; btn.disabled = false; }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>
