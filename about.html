@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | testingauthv3 - Playful Security for SaaS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #6366F1;
+            --color-primary-dark: #4F46E5;
+            --color-background: #F8FAFC;
+            --color-surface: #FFFFFF;
+            --color-text: #0F172A;
+            --color-text-muted: #64748B;
+            --color-accent: #F43F5E;
+            --color-accent-light: #FFE4E6;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --radius: 1.5rem;
+            --radius-sm: 0.75rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: var(--color-surface);
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #E2E8F0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 0 var(--color-primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 var(--color-primary-dark);
+        }
+
+        .btn-primary:active {
+            transform: translateY(2px);
+            box-shadow: 0 0 0 var(--color-primary-dark);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: #EFF6FF;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom-left-radius: 4rem;
+            border-bottom-right-radius: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- About Content --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .text-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .text-block p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+        }
+
+        .image-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 3px solid #E2E8F0;
+            box-shadow: 12px 12px 0 #E2E8F0;
+            position: relative;
+        }
+
+        .emoji-float {
+            position: absolute;
+            font-size: 3rem;
+            z-index: 2;
+        }
+
+        /* --- Values Section --- */
+        .values {
+            background: #F1F5F9;
+            border-radius: 4rem;
+            margin: 40px 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .value-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--color-background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        /* --- CTA Section / Form --- */
+        .cta-section {
+            background: var(--color-text);
+            color: white;
+            border-radius: 4rem;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            color: var(--color-text);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright {
+            border-top: 1px solid #374151;
+            padding-top: 30px;
+            text-align: center;
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .content-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <span style="font-weight:700;font-size:1.25rem">testingauthv3</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+                <a href="auth.html">Sign In</a>
+                <a href="contact.html" class="btn btn-primary" data-track="cta_click">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Our Mission</span>
+            <h1>Trust shouldn't be a chore 🎈</h1>
+            <p>We believe SaaS teams should spend their time building incredible features, not wrestling with SIG questionnaires and enterprise security gatekeepers.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="content-grid">
+                <div class="text-block">
+                    <h2>Why we started testingauthv3</h2>
+                    <p>We saw too many brilliant SaaS founders lose mid-market and enterprise deals because they couldn't answer 300-row Excel spreadsheets about their security posture.</p>
+                    <p>Security assessments used to be the domain of massive consulting firms charging $50k a pop. Small teams couldn't afford a full-time compliance hire, so they just... stayed small. We built testingauthv3 to level the playing field.</p>
+                    <p>Our platform automates the heavy lifting of evidence gathering, maps your controls to SIG, CAIQ, and SOC2, and generates a beautiful, shareable security packet that enterprises actually trust.</p>
+                </div>
+                <div class="image-card">
+                    <span class="emoji-float" style="top: -20px; right: -20px;">🚀</span>
+                    <span class="emoji-float" style="bottom: -20px; left: -20px;">🔒</span>
+                    <h3 style="margin-bottom: 1rem; color: var(--color-primary);">The Old Way vs. Our Way</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1rem;">❌ <strong>Old:</strong> Copy-pasting answers for 12 hours.</li>
+                        <li style="margin-bottom: 1rem;">✅ <strong>Our:</strong> Auto-generate reports from your real architecture.</li>
+                        <li style="margin-bottom: 1rem;">❌ <strong>Old:</strong> "Just trust us" emails.</li>
+                        <li style="margin-bottom: 1rem;">✅ <strong>Our:</strong> Professional certification-style packets.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2>Our Guiding Principles 🦄</h2>
+                <p>We’re not your typical "men in black suits" security company. We’re builders who care about your developer experience.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon-circle">⚡</div>
+                    <h3>Speed Over Bureaucracy</h3>
+                    <p>Security is only useful if it doesn't stop your release cycle. We embed findings directly into your GitHub/Jira workflows.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon-circle">💎</div>
+                    <h3>Clarity is Key</h3>
+                    <p>No cryptic vulnerability names. We explain exactly what issues exist, how to fix them, and why they matter to your buyers.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon-circle">🤝</div>
+                    <h3>Sales Empowerment</h3>
+                    <p>We don't just find bugs; we help you turn your security posture into a competitive advantage to close deals faster.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2>Want to see how we help?</h2>
+                <p>Join the founders and CTOs who use testingauthv3 to breeze through vendor security reviews.</p>
+                
+                <div class="cta-form">
+                    <form data-backend="form">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Work Email</label>
+                            <input type="email" name="email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Company Size</label>
+                            <select name="size" style="width:100%; padding: 0.75rem; border: 2px solid #E2E8F0; border-radius: var(--radius-sm);">
+                                <option value="1-10">1-10 Employees</option>
+                                <option value="11-50">11-50 Employees</option>
+                                <option value="51-200">51-200 Employees</option>
+                                <option value="200+">200+ Employees</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" data-track="cta_click">Get a Free Assessment Sample</button>
+                        <p data-success style="display:none; color: #059669; font-weight: bold; margin-top: 1rem;">Success! We'll send the packet over shortly. 📧</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo footer-logo">
+                        <span style="font-weight:700;font-size:1.25rem; color: white;">testingauthv3</span>
+                    </a>
+                    <p style="color: #9CA3AF; max-width: 300px;">Helping SaaS teams build trust and win enterprise deals without the security headache.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="index.html">Platform</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="pricing.html">Custom Quotes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="auth.html">Sign In</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 testingauthv3. All rights reserved. Made with 🛡️ and ☕.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+      var BACKEND = 'https://epitaphic-everett-propitious.ngrok-free.dev/api';
+      var TOKEN = '272b3d3c51bad616fa58f27c0b7da6718bed9514ccddc65fc880a69530965d8a';
+      var DOMAIN = 'testingauthv3.com';
+      var FORM_ID = 'cmmpuu130000yt8v4mu023qxm';
+      var HEADERS = { 'Content-Type': 'application/json', 'X-Token': TOKEN, 'X-Domain': DOMAIN };
+
+      // 1. Auto-track pageview
+      fetch(BACKEND + '/track', {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify({ event: 'pageview', path: window.location.pathname })
+      }).catch(function(){});
+
+      // 2. Track CTA clicks
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('[data-track]');
+        if (el) {
+          fetch(BACKEND + '/track', {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({ event: el.getAttribute('data-track'), path: window.location.pathname })
+          }).catch(function(){});
+        }
+      });
+
+      // 3. Handle all forms (Contact, Signup, Waitlist)
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-backend]');
+        if (!form) return;
+        e.preventDefault();
+        var type = form.getAttribute('data-backend');
+        var endpoint = type === 'signup' ? '/users' : '/forms/submit';
+        
+        // Extract dynamic form fields
+        var data = {};
+        new FormData(form).forEach(function(v, k) { data[k] = v; });
+        
+        // Add Form ID if it's a general form and we have it
+        if (type === 'form' && FORM_ID) {
+          data.formId = FORM_ID;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = '';
+        if (btn) {
+          originalText = btn.innerText;
+          btn.innerText = 'Sending...';
+          btn.disabled = true;
+        }
+
+        // Track Form Submission Event
+        fetch(BACKEND + '/track', {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify({ 
+            event: 'form_submission', 
+            path: window.location.pathname,
+            metadata: { formType: type } 
+          })
+        }).catch(function(){});
+
+        // Submit Form Data
+        fetch(BACKEND + endpoint, {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify(data)
+        }).then(function(r) { return r.json(); }).then(function(res) {
+          if (res.success) {
+            var msg = form.querySelector('[data-success]');
+            if (msg) { msg.style.display = 'block'; }
+            form.reset();
+            if (btn) btn.style.display = 'none';
+          } else {
+            alert(res.error || 'Failed to submit form');
+            if (btn) { btn.innerText = originalText; btn.disabled = false; }
+          }
+        }).catch(function(){
+          alert('Network error occurred');
+          if (btn) { btn.innerText = originalText; btn.disabled = false; }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>
