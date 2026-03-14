@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testingauthv3 | Close Enterprise Deals Faster with App Security Assessments</title>
+    <meta name="description" content="App Security Assessment helps SaaS teams complete SIG style security questionnaires and generate a shareable security packet that looks like a certification.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #6C5CE7;
+            --color-primary-dark: #574B90;
+            --color-accent: #FDCB6E;
+            --color-background: #F9F7FF;
+            --color-surface: #FFFFFF;
+            --color-text: #2D3436;
+            --color-text-muted: #636E72;
+            --font-sans: 'Quicksand', system-ui, -apple-system, sans-serif;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 30px rgba(108, 92, 231, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(249, 247, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            background: radial-gradient(circle at top right, #fff, var(--color-background));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--color-primary);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: var(--color-surface);
+            border-radius: 80px 80px 0 0;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            background: var(--color-accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Pricing Card */
+        .pricing {
+            padding: 5rem 0;
+        }
+
+        .pricing-card {
+            background: var(--color-surface);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 4px solid var(--color-primary);
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+        }
+
+        .testimonial-card {
+            background: var(--color-background);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: 700;
+            font-style: normal;
+            display: block;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 2rem auto;
+            text-align: left;
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #EEE;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--color-primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            background: #2D3436;
+            color: white;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .hero-btns { flex-direction: column; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <a href="index.html"><span style="font-weight:700;font-size:1.25rem">testingauthv3</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+                <a href="auth.html" class="btn btn-outline">Sign In</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <h1>Close Enterprise Deals Without the Security Stress 🛡️</h1>
+            <p>Stop losing deals to 200-row spreadsheets. Automate your SIG questionnaires and generate audit-grade security packets in minutes.</p>
+            <div class="hero-btns">
+                <a href="https://testingauthv3.com" class="btn btn-primary" data-track="cta_click">Start Your Assessment</a>
+                <a href="#how" style="text-decoration: underline; font-weight: 600;">How it works</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why SaaS Teams Love Us 💖</h2>
+                <p>Designed for founders and CTOs who need to move fast.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Instant SIG Filling</h3>
+                    <p>Stop dreading the "Standard Information Gathering" requests. Our tool maps your data to the SIG template automatically.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📄</span>
+                    <h3>Audit-Grade Reports</h3>
+                    <p>Generate shareable security packets that include evidence mapping for SOC2, ISO27001, and NIST standards.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🤝</span>
+                    <h3>Sales Enablement</h3>
+                    <p>Equip your sales team with a "Security Trust Center" link to proactively answer buyer questions before they ask.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🛠️</span>
+                    <h3>Dev-Friendly Remediation</h3>
+                    <p>We don't just find issues; we rank them by exploitability and provide Jira/GitHub workflows for your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section-title">
+                <h2>3 Simple Steps to "Secure" 🚀</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h3>Connect & Contextualize</h3>
+                        <p>Tell us about your app scope—Web, Mobile, or API. We'll help you define what enterprise buyers actually care about.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h3>Automated Assessment</h3>
+                        <p>Our platform evaluates your security posture against standard vendor questionnaires like the CAIQ and SIG.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h3>Generate & Share</h3>
+                        <p>Download your branded security certification packet and start closing enterprise contracts immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing 💎</h2>
+            </div>
+            <div class="pricing-card">
+                <h3>Custom Pricing</h3>
+                <div class="price">$0/mo</div>
+                <p style="margin-bottom: 2rem;">Tailored to your specific app scope and compliance needs.</p>
+                <ul style="text-align: left; margin-bottom: 2rem;">
+                    <li>✅ Unlimited Security Packets</li>
+                    <li>✅ SIG & CAIQ Templates</li>
+                    <li>✅ SOC2/ISO Mapping</li>
+                    <li>✅ Priority Remediation Support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%;" data-track="cta_click">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="grid">
+                <div class="testimonial-card">
+                    "We were losing weeks to enterprise security reviews. testingauthv3 turned that into a 20-minute task. It's a game changer for mid-market sales."
+                    <span class="testimonial-author">— Sarah K., CTO of CloudFlow</span>
+                </div>
+                <div class="testimonial-card">
+                    "The security packet looks so professional that our latest Fortune 500 buyer skipped the questionnaire entirely. It paid for itself in one deal."
+                    <span class="testimonial-author">— James R., Founder at SecurePath</span>
+                </div>
+                <div class="testimonial-card">
+                    "Finally, a security tool that speaks 'Developer'. The Jira integration made remediating our first assessment a breeze."
+                    <span class="testimonial-author">— Alex M., Lead Engineer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA & Form -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Ready to Clear Your Sales Pipeline? 🎈</h2>
+            <p>Don't let another security questionnaire slow you down. Start your assessment today.</p>
+            
+            <form data-backend="form">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" placeholder="Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Work Email</label>
+                    <input type="email" name="email" placeholder="jane@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Company Website</label>
+                    <input type="url" name="website" placeholder="https://example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="4" placeholder="How can we help you close deals?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-track="cta_click">Send Message</button>
+                <p data-success style="display:none; color: #27ae60; font-weight: bold; margin-top: 1rem; text-align: center;">Success! We will be in touch shortly.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <span style="font-weight:700;font-size:1.5rem">testingauthv3</span>
+                    <p style="margin-top: 1rem; color: #BDC3C7; max-width: 300px;">Helping SaaS teams win trust and close enterprise deals through better security evidence.</p>
+                    <div class="social-icons">
+                        <a href="#">
+                            <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                        <a href="#">
+                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <span style="font-weight: 700; color: white;">Product</span>
+                        <a href="index.html">Home</a>
+                        <a href="pricing.html">Pricing</a>
+                        <a href="about.html">Features</a>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <span style="font-weight: 700; color: white;">Support</span>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="auth.html">Sign In</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; border-top: 1px solid #444; padding-top: 2rem; font-size: 0.875rem; color: #BDC3C7;">
+                Copyright © 2026 testingauthv3. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+      var BACKEND = 'https://epitaphic-everett-propitious.ngrok-free.dev/api';
+      var TOKEN = '272b3d3c51bad616fa58f27c0b7da6718bed9514ccddc65fc880a69530965d8a';
+      var DOMAIN = 'testingauthv3.com';
+      var FORM_ID = 'cmmpuu130000yt8v4mu023qxm';
+      var HEADERS = { 'Content-Type': 'application/json', 'X-Token': TOKEN, 'X-Domain': DOMAIN };
+    
+      // 1. Auto-track pageview
+      fetch(BACKEND + '/track', {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify({ event: 'pageview', path: window.location.pathname })
+      }).catch(function(){});
+    
+      // 2. Track CTA clicks
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('[data-track]');
+        if (el) {
+          fetch(BACKEND + '/track', {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({ event: el.getAttribute('data-track'), path: window.location.pathname })
+          }).catch(function(){});
+        }
+      });
+    
+      // 3. Handle all forms (Contact, Signup, Waitlist)
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-backend]');
+        if (!form) return;
+        e.preventDefault();
+        var type = form.getAttribute('data-backend');
+        var endpoint = type === 'signup' ? '/users' : '/forms/submit';
+        
+        // Extract dynamic form fields
+        var data = {};
+        new FormData(form).forEach(function(v, k) { data[k] = v; });
+        
+        // Add Form ID if it's a general form and we have it
+        if (type === 'form' && FORM_ID) {
+          data.formId = FORM_ID;
+        }
+    
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = '';
+        if (btn) {
+          originalText = btn.innerText;
+          btn.innerText = 'Sending...';
+          btn.disabled = true;
+        }
+    
+        // Track Form Submission Event
+        fetch(BACKEND + '/track', {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify({ 
+            event: 'form_submission', 
+            path: window.location.pathname,
+            metadata: { formType: type } 
+          })
+        }).catch(function(){});
+    
+        // Submit Form Data
+        fetch(BACKEND + endpoint, {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify(data)
+        }).then(function(r) { return r.json(); }).then(function(res) {
+          if (res.success) {
+            var msg = form.querySelector('[data-success]');
+            if (msg) { msg.style.display = 'block'; }
+            form.reset();
+            if (btn) btn.style.display = 'none';
+          } else {
+            alert(res.error || 'Failed to submit form');
+            if (btn) { btn.innerText = originalText; btn.disabled = false; }
+          }
+        }).catch(function(){
+          alert('Network error occurred');
+          if (btn) { btn.innerText = originalText; btn.disabled = false; }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>
